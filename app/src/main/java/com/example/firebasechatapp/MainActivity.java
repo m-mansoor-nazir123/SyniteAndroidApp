@@ -7,6 +7,9 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import com.example.firebasechatapp.loginRegistration.LoginActivity;
+import com.example.firebasechatapp.loginRegistration.RegisterActivity;
+
 public class MainActivity extends AppCompatActivity {
 Button Login;
 Button Register;
@@ -23,7 +26,7 @@ Button Register;
         Register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent= new Intent(MainActivity.this,RegisterActivity.class);
+                Intent intent= new Intent(MainActivity.this, RegisterActivity.class);
                 startActivity(intent);
             }
         });
@@ -31,7 +34,7 @@ Button Register;
         Login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(MainActivity.this,LoginActivity.class));
+                startActivity(new Intent(MainActivity.this, LoginActivity.class));
             }
         });
 

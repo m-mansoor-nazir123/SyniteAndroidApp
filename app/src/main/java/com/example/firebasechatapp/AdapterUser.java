@@ -3,6 +3,7 @@ package com.example.firebasechatapp;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.view.Display;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,6 +16,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.squareup.picasso.Picasso;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class AdapterUser extends  RecyclerView.Adapter<AdapterUser.MyHolder> {
@@ -40,22 +42,25 @@ List<ModelUsers> UsersList;
     public void onBindViewHolder(@NonNull MyHolder holder, int position) {
 
         final String UserEmail=UsersList.get(position).getEmail();
-        final String HisUid=UsersList.get(position).getUid();
-        holder.email.setText(UserEmail);
+        final String Name=UsersList.get(position).getName();
+
+
+       holder.email.setText("hhhhhhhhhhhhhhhhhhhh");
+
 
         //Picasso.get().load(user)
 
-        holder.itemView.setOnClickListener(new View.OnClickListener() {
+       /* holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
-                Intent intent=new Intent(context,ChatActivity.class);
+               Intent intent=new Intent(context,ChatActivity.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 intent.putExtra("hisuid",HisUid);
                 context.startActivity(intent);
 
             }
-        });
+        });*/
 
     }
 
@@ -67,6 +72,7 @@ List<ModelUsers> UsersList;
     class MyHolder extends RecyclerView.ViewHolder{
         ImageView imageView;
         TextView email;
+        //TextView name;
 
         public MyHolder(@NonNull View itemView) {
             super(itemView);

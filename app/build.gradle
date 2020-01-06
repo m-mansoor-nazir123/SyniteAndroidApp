@@ -6,9 +6,10 @@ android {
     buildToolsVersion "29.0.1"
     defaultConfig {
         applicationId "com.example.firebasechatapp"
-        minSdkVersion 15
+        minSdkVersion 16
         targetSdkVersion 26
         versionCode 1
+        multiDexEnabled true
         versionName "1.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -16,6 +17,7 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+
         }
     }
 }
@@ -30,6 +32,7 @@ dependencies {
     implementation 'com.google.firebase:firebase-database:16.0.4'
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     implementation 'com.google.firebase:firebase-messaging:17.3.4'
+    implementation 'com.google.firebase:firebase-storage:16.0.4'
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test:runner:1.2.0'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
@@ -39,4 +42,21 @@ dependencies {
 
     implementation 'com.squareup.retrofit2:retrofit:2.5.0'
     implementation 'com.squareup.retrofit2:converter-gson:2.5.0'
+
+    implementation 'com.firebase:firebase-client-android:2.5.0'
+
+
+    //implementation "org.apache.poi:poi:3.17"
+    // implementation "org.apache.poi:poi-ooxml:3.17"
+
+    implementation files('libs/poi-3.15.jar')
+    implementation 'com.android.support:multidex:1.0.3'
+    implementation 'com.archit.calendar:awesome-calendar:1.1.5'
+
+
+    implementation 'com.afollestad.material-dialogs:core:0.9.2.3'
+
+
+    //For Navigation bar
+    //implementation 'br.com.liveo:navigationdrawer-material:2.5.1'
 }

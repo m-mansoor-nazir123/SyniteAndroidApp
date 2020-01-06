@@ -2,14 +2,11 @@ package com.example.firebasechatapp;
 
 public class ModelUsers {
 
-    String email, uid;
+    String email, name;
 
-    public ModelUsers() {
-
-    }
-    public ModelUsers(String email, String uid) {
+    public ModelUsers(String email, String name) {
         this.email = email;
-        this.uid = uid;
+        this.name = name;
     }
 
     public String getEmail() {
@@ -20,11 +17,16 @@ public class ModelUsers {
         this.email = email;
     }
 
-    public String getUid() {
-        return uid;
+    public String getName() {
+        return name;
     }
 
-    public void setUid(String uid) {
-        this.uid = uid;
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public ModelUsers() {
+
     }
 }
+
