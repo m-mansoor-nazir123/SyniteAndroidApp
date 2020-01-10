@@ -42,6 +42,12 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
+       ActionBar actionBar = getSupportActionBar();
+        actionBar.setDisplayShowTitleEnabled(false);
+        actionBar.setDisplayShowHomeEnabled(false);
+        actionBar.hide();
+
+
         mAuth = FirebaseAuth.getInstance();
 
 
@@ -61,11 +67,11 @@ public class LoginActivity extends AppCompatActivity {
                         // Log and toast}
                 });
 
-        ActionBar actionBar=getSupportActionBar();
-        actionBar.setTitle("Login");
+        //ActionBar actionBar=getSupportActionBar();
+        //actionBar.setTitle("Login");
 
-        actionBar.setDisplayHomeAsUpEnabled(true);
-        actionBar.setDisplayShowHomeEnabled(true);
+        //actionBar.setDisplayHomeAsUpEnabled(true);
+        //actionBar.setDisplayShowHomeEnabled(true);
 
 
         loginButton=findViewById(R.id.Loginbutton);
@@ -115,7 +121,8 @@ public class LoginActivity extends AppCompatActivity {
         notHaveAcount.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(LoginActivity.this, RegisterActivity.class));
+                Toast.makeText(LoginActivity.this,"Not Available now",Toast.LENGTH_SHORT).show();
+               /* startActivity(new Intent(LoginActivity.this, RegisterActivity.class));*/
             }
         });
 

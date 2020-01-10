@@ -10,10 +10,12 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Login"
-        android:textColor="@color/colorAccent"
+        android:layout_above="@+id/emailTil"
+        android:layout_marginBottom="75dp"
+        android:text="Sign In"
         android:textAlignment="center"
-        android:textSize="25sp"/>
+        android:textColor="@color/black"
+        android:textSize="25sp" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
@@ -21,6 +23,8 @@
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
         android:id="@+id/emailTil"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:background="@drawable/circulartextfield"
         >
         <EditText
             android:id="@+id/email"
@@ -36,45 +40,61 @@
 
 
     <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/passwordTil"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/emailTil"
         android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
-        android:id="@+id/passwordTil"
-        android:layout_below="@id/emailTil"
-        app:passwordToggleEnabled="true"
-        >
+        android:layout_marginTop="20dp"
+        app:passwordToggleEnabled="true">
+
         <EditText
             android:id="@+id/password"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Password"
-            android:inputType="textPassword"
-            />
-
-
+            android:inputType="textPassword" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
 
     <Button
         android:id="@+id/Loginbutton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/passwordTil"
-        android:layout_centerHorizontal="true"
         style="@style/Widget.AppCompat.Button.Colored"
+        android:layout_width="250dp"
+        android:layout_height="45dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="45dp"
+        android:layout_marginLeft="45dp"
+        android:layout_marginEnd="45dp"
+        android:layout_marginRight="45dp"
+        android:layout_marginBottom="32dp"
+        android:background="@drawable/radius"
+        android:text="Login"
 
-        android:text="Login"/>
+        />
 
     <TextView
         android:id="@+id/notalreadyHaveAccount"
-        android:layout_width="wrap_content"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:text="Not have account ? Register"
-        android:layout_below="@id/Loginbutton"
-        android:layout_marginTop="30dp"
-        android:layout_centerHorizontal="true"
-        android:textColor="@color/black"/>
+        android:layout_below="@+id/passwordTil"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginStart="0dp"
+        android:layout_marginLeft="0dp"
+        android:layout_marginTop="25dp"
+        android:layout_marginEnd="0dp"
+        android:layout_marginRight="0dp"
+        android:gravity="center"
+        android:text="FORGOT YOUR PASSWORD"
+        android:textColor="@color/black" />
 
 </RelativeLayout>

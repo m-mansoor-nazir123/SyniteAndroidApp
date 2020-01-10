@@ -33,6 +33,7 @@
     <com.google.android.material.textfield.TextInputLayout
 
         android:id="@+id/textInputLayout4"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_centerHorizontal="true"
@@ -44,6 +45,7 @@
 
         <EditText
             android:id="@+id/Task"
+
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Enter Task "
@@ -62,7 +64,7 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_centerHorizontal="true"
-
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_centerVertical="true"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -78,7 +80,7 @@
 
 
     <com.google.android.material.textfield.TextInputLayout
-
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:id="@+id/textInputLayout6"
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -98,7 +100,7 @@
 
 
     <com.google.android.material.textfield.TextInputLayout
-
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:id="@+id/textInputLayout7"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -119,7 +121,7 @@
 
 
     <com.google.android.material.textfield.TextInputLayout
-
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:id="@+id/textInputLayout8"
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -138,7 +140,7 @@
 
 
     <com.google.android.material.textfield.TextInputLayout
-
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:id="@+id/textInputLayout9"
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -157,7 +159,7 @@
 
 
     <com.google.android.material.textfield.TextInputLayout
-
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:id="@+id/textInputLayout10"
         android:layout_width="265dp"
         android:layout_height="58dp"
@@ -171,7 +173,7 @@
 
 
     <com.google.android.material.textfield.TextInputLayout
-
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:id="@+id/textInputLayout11"
         android:layout_width="match_parent"
         android:layout_height="0dp"

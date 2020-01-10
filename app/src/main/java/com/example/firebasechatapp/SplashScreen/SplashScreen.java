@@ -11,6 +11,7 @@ import android.widget.ProgressBar;
 
 import com.example.firebasechatapp.MainActivity;
 import com.example.firebasechatapp.R;
+import com.example.firebasechatapp.loginRegistration.LoginActivity;
 
 public class SplashScreen extends AppCompatActivity {
     ProgressBar splashProgress;
@@ -19,7 +20,6 @@ public class SplashScreen extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash_screen);
-
 
         ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayShowTitleEnabled(false);
@@ -33,7 +33,7 @@ public class SplashScreen extends AppCompatActivity {
             @Override
             public void run() {
                 //Do any action here. Now we are moving to next page
-                Intent mySuperIntent = new Intent(SplashScreen.this, MainActivity.class);
+                Intent mySuperIntent = new Intent(SplashScreen.this, LoginActivity.class);
                 startActivity(mySuperIntent);
 
                 //This 'finish()' is for exiting the app when back button pressed from Home page which is ActivityHome

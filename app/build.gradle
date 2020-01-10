@@ -6,7 +6,7 @@ android {
     buildToolsVersion "29.0.1"
     defaultConfig {
         applicationId "com.example.firebasechatapp"
-        minSdkVersion 16
+        minSdkVersion 21
         targetSdkVersion 26
         versionCode 1
         multiDexEnabled true
@@ -55,6 +55,8 @@ dependencies {
 
 
     implementation 'com.afollestad.material-dialogs:core:0.9.2.3'
+
+    implementation 'com.github.DzutsevGeorgy:Backdrop:1.0'
 
 
     //For Navigation bar
