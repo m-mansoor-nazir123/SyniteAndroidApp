@@ -13,15 +13,12 @@
         android:roundIcon="@mipmap/ic_launcher"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".BackDrop"
+            android:theme="@style/AppTheme.NoActionBar">
 
+
+        </activity>
         <activity android:name=".SplashScreen.SplashScreen">
-
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-
 
         </activity>
         <activity android:name=".excel_file.ExtractActivity" />
@@ -30,10 +27,17 @@
         <activity android:name=".AddActivity" />
         <activity android:name=".loginRegistration.DashboardActivity">
 
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
-        <activity android:name=".loginRegistration.LoginActivity" />
+        <activity android:name=".loginRegistration.LoginActivity" >
+
+        </activity>
         <activity android:name=".loginRegistration.RegisterActivity" />
-        <activity android:name=".MainActivity"></activity>
+        <activity android:name=".MainActivity" />
     </application>
 
 </manifest>

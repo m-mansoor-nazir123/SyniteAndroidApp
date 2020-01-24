@@ -72,7 +72,7 @@ EditText Task;
     Button excelfile;
     FirebaseDatabase database;
     DatabaseReference databaseReference;
-
+    Spinner s;
     Spinner company;
 
 
@@ -91,9 +91,11 @@ EditText Task;
         Feedback=findViewById(R.id.Feedback);
         Status=findViewById(R.id.Status);
         ActionPlan=findViewById(R.id.ActionPlan);
+        s = findViewById(R.id.projectAssets);
 
         final Calendar myCalendar = Calendar.getInstance();
         spiner();
+        spiner_project_assets();
 
         final DatePickerDialog.OnDateSetListener date = new DatePickerDialog.OnDateSetListener() {
 
@@ -127,7 +129,7 @@ EditText Task;
         excelfile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                modifyExistingWorkbook(company,Task,Visuals,PublishingTimeline,Deadline,Feedback,Status,ActionPlan);
+                modifyExistingWorkbook(s,Task,Visuals,PublishingTimeline,Deadline,Feedback,Status,ActionPlan,company);
             }
         });
         ExtractBut.setOnClickListener(new View.OnClickListener() {
@@ -137,20 +139,20 @@ EditText Task;
             }
         });
 
-        File file = new File(getExternalFilesDir(null), "plik.xls");
+        File file = new File(getExternalFilesDir(null), "master.xls");
         if(file.exists()) {
             Toast.makeText(getApplicationContext(),"file Exist",Toast.LENGTH_SHORT).show();
         }
         else {
             //openDialog();
             StorageReference storage = FirebaseStorage.getInstance().getReference();
-            StorageReference islandRef = storage.child("Main_excel_Files/plix.xls");
+            StorageReference islandRef = storage.child("Main_excel_Files/master.xls");
 
            /* File rootPath = new File(Environment.getExternalStorageDirectory(), "file_name");
             if(!rootPath.exists()) {
                 rootPath.mkdirs();
             }*/
-            Uri ffile = Uri.fromFile(new File(getExternalFilesDir(null), "plik.xls"));
+            Uri ffile = Uri.fromFile(new File(getExternalFilesDir(null), "master.xls"));
 
             islandRef.getFile(ffile).addOnSuccessListener(new OnSuccessListener<FileDownloadTask.TaskSnapshot>() {
                 @Override
@@ -180,12 +182,12 @@ EditText Task;
 
 
 
-    private void modifyExistingWorkbook(Spinner t, EditText twoCol, EditText threecol, EditText fourcol, EditText fivecol, EditText sixcol, EditText sevencol, EditText eightcol)  {
+    private void modifyExistingWorkbook(Spinner t, EditText twoCol, EditText threecol, EditText fourcol, EditText fivecol, EditText sixcol, EditText sevencol, EditText eightcol,Spinner compnyName)  {
         {
-String excelFilePath = "plik.xls";
+String excelFilePath = "master.xls";
 
 try {
-FileInputStream inputStream = new FileInputStream(new File(getExternalFilesDir(null), "plik.xls"));
+FileInputStream inputStream = new FileInputStream(new File(getExternalFilesDir(null), "master.xls"));
 Workbook workbook = WorkbookFactory.create(inputStream);
 Sheet sheet = workbook.getSheetAt(0);
     String edit=t.getSelectedItem().toString();
@@ -196,10 +198,11 @@ Sheet sheet = workbook.getSheetAt(0);
     String SixColVal=sixcol.getText().toString();
     String SevenColVal=sevencol.getText().toString();
     String EigthColVal=eightcol.getText().toString();
+    String nineColVal=compnyName.getSelectedItem().toString();
 
 
 Object[][] bookData = {
-{edit,twoColVal,threecolVal,fourcolVal,FivecolVal,SixColVal,SevenColVal,EigthColVal}
+{edit,twoColVal,threecolVal,fourcolVal,FivecolVal,SixColVal,SevenColVal,EigthColVal,nineColVal}
 };
 
 int rowCount = sheet.getLastRowNum();
@@ -226,11 +229,11 @@ columnCount++;
 
     //FirebaseStorage storage = FirebaseStorage.getInstance();
     //StorageReference storageReference = storage.getReferenceFromUrl("gs://tutsplus-firebase.appspot.com").child("test.txt");
-    Uri ffile = Uri.fromFile(new File(getExternalFilesDir(null), "plik.xls"));
+    Uri ffile = Uri.fromFile(new File(getExternalFilesDir(null), "master.xls"));
 
 
 
-    StorageReference riversRef = mStorageRef.child("Main_excel_Files/plix.xls");
+    StorageReference riversRef = mStorageRef.child("Main_excel_Files/master.xls");
 
     riversRef.putFile(ffile)
             .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
@@ -257,7 +260,7 @@ columnCount++;
 
     inputStream.close();
 
-    File file = new File(getExternalFilesDir(null), "plik.xls");
+    File file = new File(getExternalFilesDir(null), "master.xls");
     FileOutputStream outputStream = null;
 
     try {
@@ -338,6 +341,10 @@ ex.printStackTrace();
         cell.setCellValue("Action Plan");
         cell.setCellStyle(cellStyle);
 
+        cell = row.createCell(8);
+        cell.setCellValue("Company Name");
+        cell.setCellStyle(cellStyle);
+
         sheet.setColumnWidth(0, (10 * 300));
         sheet.setColumnWidth(1, (10 * 400));
         sheet.setColumnWidth(2, (10 * 300));
@@ -346,8 +353,9 @@ ex.printStackTrace();
         sheet.setColumnWidth(5, (10 * 500));
         sheet.setColumnWidth(6, (10 * 300));
         sheet.setColumnWidth(7, (10 * 400));
+        sheet.setColumnWidth(8, (10 * 400));
 
-        File file = new File(getExternalFilesDir(null), "plik.xls");
+        File file = new File(getExternalFilesDir(null), "master.xls");
         FileOutputStream outputStream = null;
 
         try {
@@ -365,7 +373,6 @@ ex.printStackTrace();
             }
         }
     }
-
 
 
     public void spiner() {
@@ -410,6 +417,15 @@ ex.printStackTrace();
 
     }
 
+    public void spiner_project_assets(){
+        String[] arraySpinner = new String[] {
+                "Social Assets", "Website"
+        };
 
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
+                android.R.layout.simple_spinner_item, arraySpinner);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        s.setAdapter(adapter);
+    }
 }
 

@@ -121,8 +121,8 @@ public class ExtractActivity extends AppCompatActivity implements ExampleDialog.
             int flag=0;
 
                     try {
-                        FileInputStream inputStream2=new FileInputStream(new File(getExternalFilesDir(null), "newplik.xls"));
-                        FileInputStream inputStream = new FileInputStream(new File(getExternalFilesDir(null), "plik.xls"));
+                        FileInputStream inputStream2=new FileInputStream(new File(getExternalFilesDir(null), "extracted.xls"));
+                        FileInputStream inputStream = new FileInputStream(new File(getExternalFilesDir(null), "master.xls"));
                         Workbook workbook = WorkbookFactory.create(inputStream);
                         Sheet sheet = workbook.getSheetAt(0);
 
@@ -131,6 +131,8 @@ public class ExtractActivity extends AppCompatActivity implements ExampleDialog.
                         Workbook workbook2 = WorkbookFactory.create(inputStream2);
                         Sheet sheet2 = workbook2.getSheetAt(0);
                                 int count=7;
+                        int lastrow =sheet.getLastRowNum();
+                        int finalLastRow=lastrow+count;
                         //seting color of excel files
                         CellStyle GreenCell= workbook2.createCellStyle();
                         GreenCell.setFillForegroundColor(HSSFColor.LIGHT_GREEN.index);
@@ -146,55 +148,107 @@ public class ExtractActivity extends AppCompatActivity implements ExampleDialog.
                         Red.setFillPattern(HSSFCellStyle.SOLID_FOREGROUND);
 
 
-
                             for (Row myrow : sheet) {
 
 
                                 Cell val = myrow.getCell(4);
                                 String cellval = val.toString();
 
-                                Cell firstval = myrow.getCell(0);
+                                Cell firstval = myrow.getCell(8);
                                 String cellFirstValue = firstval.toString();
+
+                                Cell firstcell = myrow.getCell(0);
+                                String firstcelllstr = firstcell.toString();
 
 
                                 for (int g = 0; g < array.size(); g++) {
 
-                                    if ((cellval.equalsIgnoreCase(array.get(g)) && (cellFirstValue.equalsIgnoreCase(text)))) {
+                                    if ((cellval.equalsIgnoreCase(array.get(g)) && (cellFirstValue.equalsIgnoreCase(text)))
+                                            & (firstcelllstr.equalsIgnoreCase("Social Assets"))) {
                                         count++;
                                         roww = sheet2.createRow(count);
                                         for (int f = 0; f < 8; f++) {
                                             Cell celll = roww.createCell(f);
                                             celll.setCellValue(String.valueOf(myrow.getCell(f)));
                                             //Toast.makeText(getApplicationContext(), " " + celll, Toast.LENGTH_SHORT).show();
-                                            String valpublishing=celll.getStringCellValue();
+                                            String valpublishing = celll.getStringCellValue();
 
-                                            if(((flag==1)&(f==7))|((flag==1)&(f==6))){
+                                            if (((flag == 1) & (f == 7)) | ((flag == 1) & (f == 6))) {
                                                 celll.setCellStyle(GreenCell);
                                             }
 
-                                            if(((flag==2)&(f==7))|((flag==2)&(f==6))){
+                                            if (((flag == 2) & (f == 7)) | ((flag == 2) & (f == 6))) {
                                                 celll.setCellStyle(YellowCell);
                                             }
 
-                                            if(((flag==3)&(f==7))|((flag==3)&(f==6))){
+                                            if (((flag == 3) & (f == 7)) | ((flag == 3) & (f == 6))) {
                                                 celll.setCellStyle(Red);
                                             }
 
-                                                if((f==3)&(valpublishing.equalsIgnoreCase("Done"))){
-                                                flag=1;
-                                                }
-                                                else{if((f==3)&(valpublishing.equalsIgnoreCase("Ongoing"))){
-                                                    flag=2;
-                                                }
-                                                else { if((f==3)&(valpublishing.equalsIgnoreCase("Pending"))){
-                                                    flag=3;
-                                                }
+                                            if ((f == 3) & (valpublishing.equalsIgnoreCase("Done"))) {
+                                                flag = 1;
+                                            } else {
+                                                if ((f == 3) & (valpublishing.equalsIgnoreCase("Ongoing"))) {
+                                                    flag = 2;
+                                                } else {
+                                                    if ((f == 3) & (valpublishing.equalsIgnoreCase("Pending"))) {
+                                                        flag = 3;
+                                                    }
 
                                                 }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        for (Row myrow : sheet) {
+
+
+                            Cell val = myrow.getCell(4);
+                            String cellval = val.toString();
+
+                            Cell firstval = myrow.getCell(8);
+                            String cellFirstValue = firstval.toString();
+
+                            Cell firstcell = myrow.getCell(0);
+                            String firstcelllstr = firstcell.toString();
+
+                            for (int g = 0; g < array.size(); g++) {
+
+                                if ((cellval.equalsIgnoreCase(array.get(g)) & (cellFirstValue.equalsIgnoreCase(text)))) {
+                                    if (firstcelllstr.equalsIgnoreCase("Website")) {
+                                        count++;
+                                        roww = sheet2.createRow(count);
+                                        for (int f = 0; f < 8; f++) {
+                                            Cell celll = roww.createCell(f);
+                                            celll.setCellValue(String.valueOf(myrow.getCell(f)));
+                                            //Toast.makeText(getApplicationContext(), " " + celll, Toast.LENGTH_SHORT).show();
+                                            String valpublishing = celll.getStringCellValue();
+
+                                            if (((flag == 1) & (f == 7)) | ((flag == 1) & (f == 6))) {
+                                                celll.setCellStyle(GreenCell);
+                                            }
+
+                                            if (((flag == 2) & (f == 7)) | ((flag == 2) & (f == 6))) {
+                                                celll.setCellStyle(YellowCell);
+                                            }
+
+                                            if (((flag == 3) & (f == 7)) | ((flag == 3) & (f == 6))) {
+                                                celll.setCellStyle(Red);
+                                            }
+
+                                            if ((f == 3) & (valpublishing.equalsIgnoreCase("Done"))) {
+                                                flag = 1;
+                                            } else {
+                                                if ((f == 3) & (valpublishing.equalsIgnoreCase("Ongoing"))) {
+                                                    flag = 2;
+                                                } else {
+                                                    if ((f == 3) & (valpublishing.equalsIgnoreCase("Pending"))) {
+                                                        flag = 3;
+                                                    }
+
                                                 }
-
-
-
+                                            }
                                         }
 
 
@@ -203,14 +257,64 @@ public class ExtractActivity extends AppCompatActivity implements ExampleDialog.
 
                             }
 
+                        }
+
+
+                           int val= sheet2.getLastRowNum();
+                            int val2=sheet2.getPhysicalNumberOfRows();
+                        int last_social=0;
+                        int lastwebite=0;
+                        int Firstval_Asset_social=0;
+                        int firestval_website=0;
+                        int websiteasset_count=0;
+                        int socialasset_count=0;
+
+
+                        for (int i=8; i<sheet2.getPhysicalNumberOfRows()  ; i++) {
+                            Cell cell = sheet2.getRow(i).getCell(0);
+                            String Stringc = cell.toString();
+
+                            if (cell != null) {
+                                if (sheet2.getRow(i).getCell(0).toString().equals(sheet2.getRow(i + 1).getCell(0).toString()) & (sheet2.getRow(i).getCell(0).toString().equals("Social Assets"))
+
+                                ) {
+                                    last_social = i;
+                                    if (Firstval_Asset_social == 0) {
+                                        socialasset_count = i;
+                                        Firstval_Asset_social++;
+                                    }
+
+
+                                } else {
+                                    if (sheet2.getRow(i).getCell(0).toString().equals(sheet2.getRow(i + 1).getCell(0).toString()) & (sheet2.getRow(i).getCell(0).toString().equals("Website"))) {
+                                        lastwebite = i;
+                                        if (firestval_website == 0) {
+                                            websiteasset_count = i;
+                                            firestval_website++;
+                                        }
+                                    }
+                                }
+                            }}
+                            if (Firstval_Asset_social != 0) {
+                                    CellRangeAddress cellRangeAddress = new CellRangeAddress(socialasset_count, last_social + 1, 0, 0);
+                                    sheet2.addMergedRegion(cellRangeAddress);
+                            }
+                            if (firestval_website != 0) {
+                                for (int j = websiteasset_count; j <= websiteasset_count; j++) {
+                                    CellRangeAddress cellRangeAddress1 = new CellRangeAddress(j, lastwebite + 1, 0, 0);
+                                    sheet2.addMergedRegion(cellRangeAddress1);
+                                }
+                            }
+
+
                         StorageReference mStorageRef;
                         mStorageRef = FirebaseStorage.getInstance().getReference();
 
                         //FirebaseStorage storage = FirebaseStorage.getInstance();
                         //StorageReference storageReference = storage.getReferenceFromUrl("gs://tutsplus-firebase.appspot.com").child("test.txt");
-                        Uri ffile = Uri.fromFile(new File(getExternalFilesDir(null), "newplik.xls"));
+                        Uri ffile = Uri.fromFile(new File(getExternalFilesDir(null), "extracted.xls"));
 
-                        StorageReference riversRef = mStorageRef.child("Extracted_excel_Files/newplix.xls");
+                        StorageReference riversRef = mStorageRef.child("Extracted_excel_Files/extracted.xls");
 
                         riversRef.putFile(ffile)
                                 .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
@@ -234,7 +338,7 @@ public class ExtractActivity extends AppCompatActivity implements ExampleDialog.
 
 
                         inputStream2.close();
-                        File file = new File(getExternalFilesDir(null), "newplik.xls");
+                        File file = new File(getExternalFilesDir(null), "extracted.xls");
                         FileOutputStream outputStream = null;
 
                         try {
@@ -387,7 +491,7 @@ public class ExtractActivity extends AppCompatActivity implements ExampleDialog.
         sheet.setColumnWidth(6, (10 * 300));
         sheet.setColumnWidth(7, (10 * 400));
 
-        File file = new File(getExternalFilesDir(null), "newplik.xls");
+        File file = new File(getExternalFilesDir(null), "extracted.xls");
         FileOutputStream outputStream = null;
 
         try {
@@ -475,7 +579,7 @@ public class ExtractActivity extends AppCompatActivity implements ExampleDialog.
         sheet.setColumnWidth(6, (10 * 300));
         sheet.setColumnWidth(7, (10 * 400));
 
-        File file = new File(getExternalFilesDir(null), "newplik.xls");
+        File file = new File(getExternalFilesDir(null), "extracted.xls");
         FileOutputStream outputStream = null;
 
         try {
@@ -499,12 +603,12 @@ public class ExtractActivity extends AppCompatActivity implements ExampleDialog.
         categories = new ArrayList<String>();
 
         try {
-            FileInputStream inputStream = new FileInputStream(new File(getExternalFilesDir(null), "plik.xls"));
+            FileInputStream inputStream = new FileInputStream(new File(getExternalFilesDir(null), "master.xls"));
             Workbook workbook = WorkbookFactory.create(inputStream);
             Sheet sheet = workbook.getSheetAt(0);
             for (Row myrow : sheet) {
                 //categories.clear();
-                Cell val2 = myrow.getCell(0);
+                Cell val2 = myrow.getCell(8);
                 String cellval2 = val2.toString();
                 categories.add(cellval2);
             }
@@ -525,5 +629,7 @@ public class ExtractActivity extends AppCompatActivity implements ExampleDialog.
         }
     }
 
+    public void extractdata_merge(){
 
+    }
 }

@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".excel_file.ExcelWriter"
-    android:padding="10dp">
+    android:padding="5dp">
 
 
     <com.google.android.material.textfield.TextInputLayout
@@ -32,13 +32,34 @@
 
     <com.google.android.material.textfield.TextInputLayout
 
+        android:id="@+id/textInputAssets"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:layout_centerHorizontal="true"
+
+        android:layout_centerVertical="true"
+        app:layout_constraintBottom_toTopOf="@+id/textInputLayout4"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textInputLayout3">
+
+        <Spinner
+            android:id="@+id/projectAssets"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:hint="project " />
+    </com.google.android.material.textfield.TextInputLayout>
+
+
+    <com.google.android.material.textfield.TextInputLayout
+
         android:id="@+id/textInputLayout4"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="32dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textInputLayout3">
@@ -160,20 +181,6 @@
 
     <com.google.android.material.textfield.TextInputLayout
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:id="@+id/textInputLayout10"
-        android:layout_width="265dp"
-        android:layout_height="58dp"
-        android:layout_centerHorizontal="true"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textInputLayout9">
-
-
-    </com.google.android.material.textfield.TextInputLayout>
-
-
-    <com.google.android.material.textfield.TextInputLayout
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:id="@+id/textInputLayout11"
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -192,37 +199,32 @@
 
     <Button
         android:id="@+id/queryData"
+        style="@style/Widget.AppCompat.Button.Colored"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="150dp"
-        android:layout_marginLeft="150dp"
+        android:layout_marginTop="2dp"
         android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
         android:text="Extract Data"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.428"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textInputLayout10"
-        app:layout_constraintVertical_bias="1.0"
-        style="@style/Widget.AppCompat.Button.Colored"
-        />
+        app:layout_constraintTop_toBottomOf="@+id/textInputLayout11" />
 
     <Button
         android:id="@+id/excelfile"
+        style="@style/Widget.AppCompat.Button.Colored"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
-        android:layout_marginLeft="32dp"
+        android:layout_marginTop="2dp"
         android:text="Generate"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textInputLayout10"
-        app:layout_constraintVertical_bias="1.0"
-        style="@style/Widget.AppCompat.Button.Colored"
-        />
+        app:layout_constraintTop_toBottomOf="@+id/textInputLayout11" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
